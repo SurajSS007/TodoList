@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Form({setInputText,todos,setTodos,inputText}) {
+function Form({setInputText,todos,setTodos,inputText,setStatus}) {
 
 
 
@@ -15,7 +15,11 @@ function Form({setInputText,todos,setTodos,inputText}) {
         ])
         setInputText("")
     }
-
+    
+    const statusHandler = (e) =>{
+      console.log(e.target.value)
+      setStatus(e.target.value)
+    }
     return (
         <div>
         <form>
@@ -24,7 +28,7 @@ function Form({setInputText,todos,setTodos,inputText}) {
           <i className="fas fa-plus-square"></i>
         </button>
         <div className="select">
-          <select name="todos" className="filter-todo">
+          <select name="todos" onClick={statusHandler} className="filter-todo">
             <option value="all">All</option>
             <option value="completed">Completed</option>
             <option value="uncompleted">Uncompleted</option>
