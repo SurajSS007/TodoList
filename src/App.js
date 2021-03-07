@@ -8,15 +8,15 @@ function App() {
     const [status,setStatus] = useState('all')
     const [filteredTodos,setFilteredTodos] = useState([])
 
+      //Runs once
+      useEffect(() => {
+        getLocalTodos()
+      }, [])
 
     useEffect(() => {
       filterHandler()
       saveLocalTodos()
     }, [status,todos])
-//Runs once
-    // useEffect(() => {
-    //   getLocalTodos()
-    // }, [])
 
     const filterHandler = () => {
         switch(status){
@@ -34,19 +34,19 @@ function App() {
 
 
       const saveLocalTodos = ()=>{
-        localStorage.setItem("todos",JSON.stringify(todos))
+        localStorage.setItem('todos',JSON.stringify(todos))
       }
 
       const getLocalTodos = () => {
-        if(localStorage.getItem("todos") === null){
-          localStorage.setItem("todos",JSON.stringify([]));
+        if(localStorage.getItem('todos') === null){
+          localStorage.setItem('todos',JSON.stringify([]));
         }else{
-          let todoLocal  = JSON.parse()
+          let todoLocal  = JSON.parse(localStorage.getItem('todos'));
           console.log(todoLocal);
           setTodos(todoLocal);
         }
       }
-
+      
 
 
 
